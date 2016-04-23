@@ -1,12 +1,18 @@
+require 'rubygems'
 require 'sinatra'
+require 'json'
 require 'tumblr_client'
-require 'oauth'
 require 'omniauth'
 require 'omniauth-tumblr'
 
 class SinatraApp < Sinatra::Base
   configure do
     set :sessions, true
+    set :inline_templates, true
+  end
+
+  use OmniAuth::Builder do
+    provider :tumblr, ENV['TUMBLR_CONSUMER_KEY'], ENV['TUMBLR_CONSUMER_SECRET']
   end
 
 get "/" do
