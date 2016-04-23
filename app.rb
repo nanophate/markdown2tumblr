@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'sinatra'
-require 'json'
 require 'tumblr_client'
 require 'omniauth'
 require 'omniauth-tumblr'
@@ -25,7 +24,7 @@ class SinatraApp < Sinatra::Base
   end
 	  
 	get '/auth/:provider/callback' do
-	  session[:authenticated] = true
+		session[:authenticated] = true
 	  
 	  auth = request.env["omniauth.auth"]
 	  session[:user_id] = auth["uid"]
@@ -33,12 +32,14 @@ class SinatraApp < Sinatra::Base
 	  session[:access_token_secret] = auth['credentials']['secret']
 	  
 	  Tumblr.configure do |config|
-		config.consumer_key = ENV['TUMBLR_CONSUMER_KEY']
-		config.consumer_secret = ENV['TUMBLR_CONSUMER_SECRET']
-		config.oauth_token = session[:access_token]
-		config.oauth_token_secret = session[:access_token_secret]
+	  	config.consumer_key = ENV['TUMBLR_CONSUMER_KEY']
+		  config.consumer_secret = ENV['TUMBLR_CONSUMER_SECRET']
+		  config.oauth_token = session[:access_token]
+		  config.oauth_token_secret = session[:access_token_secret]
 	  end
+	  
 	  @@client = Tumblr::Client.new
+	  
 	  redirect '/'
 	end
 
