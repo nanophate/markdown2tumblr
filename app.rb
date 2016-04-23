@@ -1,9 +1,13 @@
-require 'rubygems'
 require 'sinatra'
 require 'tumblr_client'
 require 'oauth'
 require 'omniauth'
 require 'omniauth-tumblr'
+
+class SinatraApp < Sinatra::Base
+  configure do
+    set :sessions, true
+  end
 
 get "/" do
   if session[:authenticated]
@@ -59,4 +63,6 @@ end
 not_found do
   status 404
   "not found"
+end
+
 end
