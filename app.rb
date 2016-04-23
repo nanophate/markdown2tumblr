@@ -23,31 +23,30 @@ class SinatraApp < Sinatra::Base
     end
   end
 	  
-	get '/auth/:provider/callback' do
-		session[:authenticated] = true
+  get '/auth/:provider/callback' do
+    session[:authenticated] = true  
+    auth = request.env["omniauth.auth"]
+    session[:user_id] = auth["uid"]
+    session[:access_token] = auth['credentials']['token']
+    session[:access_token_secret] = auth['credentials']['secret']
 	  
-	  auth = request.env["omniauth.auth"]
-	  session[:user_id] = auth["uid"]
-	  session[:access_token] = auth['credentials']['token']
-	  session[:access_token_secret] = auth['credentials']['secret']
-	  
-	  Tumblr.configure do |config|
-	  	config.consumer_key = ENV['TUMBLR_CONSUMER_KEY']
-		  config.consumer_secret = ENV['TUMBLR_CONSUMER_SECRET']
-		  config.oauth_token = session[:access_token]
-		  config.oauth_token_secret = session[:access_token_secret]
-	  end
-	  
-	  @@client = Tumblr::Client.new
-	  
-	  redirect '/'
-	end
-
-	post '/' do
-	  begin
-	    @@client.text("nanophate.tumblr.com",{:title => 'test', :body => 'Life is just a mere dream'})
-	  end
-	end
+    Tumblr.configure do |config|
+      config.consumer_key = ENV['TUMBLR_CONSUMER_KEY']
+      config.consumer_secret = ENV['TUMBLR_CONSUMER_SECRET']
+      config.oauth_token = session[:access_token]
+      config.oauth_token_secret = session[:access_token_secret]
+    end
+    
+    @@client = Tumblr::Client.new 
+    
+    redirect '/'
+  end
+  
+  post '/' do
+    begin
+      @@client.text("nanophate.tumblr.com",{:title => 'test', :body => 'Life is just a mere dream'})
+    end
+  end
 
 end
 
