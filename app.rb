@@ -6,7 +6,7 @@ require 'omniauth'
 require 'omniauth-tumblr'
 
 class SinatraApp < Sinatra::Base
-	
+
   configure do
     set :sessions, true
     set :inline_templates, true
@@ -16,7 +16,7 @@ class SinatraApp < Sinatra::Base
     provider :tumblr, ENV['TUMBLR_CONSUMER_KEY'], ENV['TUMBLR_CONSUMER_SECRET']
   end
 
-get "/" do
+get '/' do
   if session[:authenticated]
     erb :index
   else
@@ -24,7 +24,7 @@ get "/" do
   end
 end
 
-get "/auth/:provider/callback" do
+get '/auth/:provider/callback' do
   session[:authenticated] = true
   
   auth = request.env["omniauth.auth"]
@@ -73,3 +73,6 @@ not_found do
 end
 
 end
+
+
+SinatraApp.run! if __FILE__ == $0

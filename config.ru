@@ -1,4 +1,6 @@
-require 'rubygems'
-require 'app'
+$LOAD_PATH.unshift(File.dirname(__FILE__))
 
-run Sinatra::Application
+require "rubygems"
+require "app"
+
+run SinatraApp
