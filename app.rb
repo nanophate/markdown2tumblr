@@ -6,6 +6,7 @@ require 'omniauth'
 require 'omniauth-tumblr'
 
 class SinatraApp < Sinatra::Base
+	
   configure do
     set :sessions, true
     set :inline_templates, true
