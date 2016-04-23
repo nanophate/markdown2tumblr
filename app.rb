@@ -6,6 +6,11 @@ require 'omniauth-tumblr'
 
 class SinatraApp < Sinatra::Base
 
+  configure do
+    set :sessions, true
+    set :inline_templates, true
+  end
+
   use OmniAuth::Builder do
     provider :tumblr, ENV['TUMBLR_CONSUMER_KEY'], ENV['TUMBLR_CONSUMER_SECRET']
   end
