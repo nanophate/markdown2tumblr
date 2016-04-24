@@ -10,7 +10,7 @@ I WILL NOT HOLD ANY RESPONSIBILITY FOR USING THIS APP
 
 #useage
 1. prompt to login to tumblr
-2. redirected to a page you can post message to tumblr
+2. redirected to a page where you can post a message to tumblr
 3. gives you the id for your post
 4. Go check your tumblr blog
 
