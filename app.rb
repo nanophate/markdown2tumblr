@@ -46,7 +46,7 @@ class SinatraApp < Sinatra::Base
     @title = params[:title].to_s
     @body = params[:body].to_s
     #name = @@client.info['user']['name']
-    @@client.text("nanophate.tumblr.com",{:title => "#{@title}", :body => "#{@body}"})
+    @@client.text("nanophate.tumblr.com",{:title => @title}, :body => @body})
   end
 
 end
