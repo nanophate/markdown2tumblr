@@ -7,3 +7,7 @@ gem 'tumblr_client'
 gem 'omniauth'
 gem 'omniauth-tumblr'
 gem 'oauth'
+
+group :development do
+  gem 'pry'
+end
