@@ -45,7 +45,7 @@ class SinatraApp < Sinatra::Base
   post '/' do
     title = params[:title].to_s
     body = params[:body].to_s
-    name = @@client.info['user']['name']
+    name = @@client.info['user']['name'].to_s
     @@client.text("#{name}.tumblr.com",{:title => title, :body => body})
   end
 
