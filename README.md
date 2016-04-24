@@ -1,6 +1,6 @@
 # Upload blog post to tumblr with markdown
 
-markdown2idobat is an automatic blog posting web-app specifically for [tumblr](https://tumblr.com). 
+markdown2tumblr is an automatic blog posting web-app specifically for [tumblr](https://tumblr.com). 
 
 Currentlly running on heroku click [here](https://test-file-nanophate.herokuapp.com)
 
@@ -15,7 +15,7 @@ I WILL NOT HOLD ANY RESPONSIBILITY FOR USING THIS APP
 4. Go check your tumblr blog
 
 MIT
-
+s
 #TODO 
 
 - [x] Post message to tumblr
