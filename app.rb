@@ -41,11 +41,11 @@ class SinatraApp < Sinatra::Base
     
     redirect '/'
   end
-  
+
   post '/' do
-    @title = parms[:title].to_s
+    @title = params[:title].to_s
     @body = params[:body].to_s
-    @@client.text("nanophate.tumblr.com",{:title => '', :body => ''})
+    @@client.text("nanophate.tumblr.com",{:title => @title, :body => @body})
   end
 
 end
