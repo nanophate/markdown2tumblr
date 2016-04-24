@@ -43,8 +43,8 @@ class SinatraApp < Sinatra::Base
   end
   
   post '/' do
-    @body = @params[:body]
-    @@client.text("nanophate.tumblr.com",{:title => 'test', :body => '#{@body}'})
+    body = params[:body]
+    @@client.text("nanophate.tumblr.com",{:title => 'test', :body => '#{body}'})
   end
 
 end
