@@ -1,4 +1,4 @@
-# Upload blog post to tumblr with markdown
+# Upload blog post to tumblr using markdown
 
 markdown2tumblr is an automatic blog posting web-app specifically for [tumblr](https://tumblr.com). 
 
