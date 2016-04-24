@@ -39,13 +39,12 @@ class SinatraApp < Sinatra::Base
     
     @@client = Tumblr::Client.new 
     
-    redirect '/'
+    redirect '/post'
   end
   
-  post '/' do
-    begin
-      @@client.text("nanophate.tumblr.com",{:title => 'test', :body => 'Life is just a mere dream'})
-    end
+  post '/post' do
+    @body = @params[:body]
+    @@client.text("nanophate.tumblr.com",{:title => 'test', :body => '#{@body}'})
   end
 
 end
