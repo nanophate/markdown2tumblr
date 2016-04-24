@@ -10,7 +10,7 @@ require 'tumblr_client'
 
   client = Tumblr::Client.new 
 
-  puts client.info['user']['name']
+  puts client.info['user']['name'].to_s
 
 =begin
   [1] pry(main)> client.info
